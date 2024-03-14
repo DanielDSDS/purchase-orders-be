@@ -1,0 +1,16 @@
+-- CreateTable
+CREATE TABLE "Order" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "date" DATETIME DEFAULT CURRENT_TIMESTAMP,
+    "total" REAL DEFAULT 0
+);
+
+-- CreateTable
+CREATE TABLE "Product" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NOT NULL,
+    "unitPrice" REAL NOT NULL,
+    "qty" INTEGER NOT NULL,
+    "orderId" INTEGER,
+    CONSTRAINT "Product_orderId_fkey" FOREIGN KEY ("orderId") REFERENCES "Order" ("id") ON DELETE SET NULL ON UPDATE CASCADE
+);
